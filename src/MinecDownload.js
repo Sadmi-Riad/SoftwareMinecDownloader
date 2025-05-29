@@ -19,11 +19,52 @@ const downloads = [
   },
 ];
 
+// Team members including two supervisors
 const projectMembers = [
-  { id: 1, firstname: "Sadmi", lastname: "Mohamed Riad", role: "USTHB Student" },
-  { id: 2, firstname: "Boutaghou", lastname: "Maria Ghalia", role: "USTHB Student" },
-  { id: 3, firstname: "Mentizi", lastname: "Rayane Rafik", role: "USTHB Student" },
-  { id: 4, firstname: "Ait Ahcene", lastname: "Melissa", role: "USTHB Student" },
+  {
+    id: 0,
+    firstname: "Pr Baba-Ali",
+    lastname: "Riadh",
+    role: "Supervisor",
+    email: "superviseur@example.com",
+    supervisor: true,
+  },
+  {
+    id: 1,
+    firstname: "Dr Madi",
+    lastname: "Sarah",
+    role: "Co-supervisor",
+    email: "eng.s.madi@gmail.com",
+    supervisor: true,
+  },
+  {
+    id: 2,
+    firstname: "Sadmi",
+    lastname: "Mohamed Riad",
+    role: "USTHB Student",
+    email: "sadriad01@gmail.com",
+  },
+  {
+    id: 3,
+    firstname: "Boutaghou",
+    lastname: "Maria Ghalia",
+    role: "USTHB Student",
+    email: "boutaghoumaria@gmail.com",
+  },
+  {
+    id: 4,
+    firstname: "Mentizi",
+    lastname: "Rayane Rafik",
+    role: "USTHB Student",
+    email: "rayane.mt25@gmail.com",
+  },
+  {
+    id: 5,
+    firstname: "Ait Ahcene",
+    lastname: "Melissa",
+    role: "USTHB Student",
+    email: "melissaaitahcene04@gmail.com",
+  },
 ];
 
 const userGuideSteps = [
@@ -90,7 +131,7 @@ const userGuideSteps = [
         <h4>Clean Section:</h4>
         <ul>
           <li>Delete Duplicates: Remove exact or near-duplicate rows</li>
-          <li>Handle Missing Data: Fill with mean/median</li>
+          <li>Handle Missing Data: Fill with mean/median/KNN</li>
           <li>Handle Outliers: Options: IQR or Isolation Forest</li>
           <li>Handle Imbalanced Data: SMOTE</li>
         </ul>
@@ -117,7 +158,7 @@ const userGuideSteps = [
           <li>View: Minimize, Maximize, Close</li>
         </ul>
 
-        <h4>Validation Methods:</h4>
+        <h4>Test Methods:</h4>
         <ul>
           <li>Use Training Set: Apply estimation directly on training data</li>
           <li>Supplied Test Set: Load an external test dataset for evaluation</li>
@@ -192,7 +233,7 @@ const DownloadCard = ({ id, title, href, imgSrc, alt, hovered, onHover }) => {
   );
 };
 
-const CollapsibleSection = ({ title, isCollapsed, toggleCollapse, children, id }) => (
+const CollapsibleSection = ({ id, title, isCollapsed, toggleCollapse, children }) => (
   <section aria-labelledby={`${id}-heading`}>
     <h2
       id={`${id}-heading`}
@@ -229,13 +270,16 @@ export default function MinecDownload() {
   const [descCollapsed, setDescCollapsed] = useState(false);
   const [guideCollapsed, setGuideCollapsed] = useState(true);
   const [hoveredCard, setHoveredCard] = useState(null);
-  const [activeGuideStep, setActiveGuideStep] = useState(userGuideSteps[0].id);
+  const [activeGuideStep, setActiveGuideStep] = useState(userGuideSteps[0]?.id);
 
   useEffect(() => {
     const onScroll = () => setHeaderScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const supervisors = projectMembers.filter((m) => m.supervisor);
+  const students = projectMembers.filter((m) => !m.supervisor);
 
   return (
     <div className="minec-page">
@@ -246,17 +290,12 @@ export default function MinecDownload() {
       <main className="minec-main">
         {/* Download buttons */}
         <div className="download-buttons" role="region" aria-label="Download Minec software">
-          {downloads.map((download) => (
-            <DownloadCard
-              key={download.id}
-              {...download}
-              hovered={hoveredCard}
-              onHover={setHoveredCard}
-            />
+          {downloads.map((dl) => (
+            <DownloadCard key={dl.id} {...dl} hovered={hoveredCard} onHover={setHoveredCard} />
           ))}
         </div>
 
-        {/* Software Description collapsible */}
+        {/* Software Description & Team */}
         <CollapsibleSection
           id="software-description"
           title="Software Description and Project Members"
@@ -266,31 +305,57 @@ export default function MinecDownload() {
           <div className="project-description">
             <p>
               MINEC is a powerful data mining application developed as a final year
-              project by a team of 4 computer science students. The software provides
-              tools for data preprocessing, analysis, and visualization.
+              project by a team of 4 computer science students under the supervision of{' '}
+              <strong>
+                {supervisors.map((s) => `${s.firstname} ${s.lastname}`).join(" and ")}
+              </strong>
+              . The software provides tools for data preprocessing, analysis, and
+              visualization.
             </p>
 
-            <h3>Project Team</h3>
-            <div className="team-grid">
-              {projectMembers.map((member) => (
-                <div key={member.id} className="team-member">
+            <h3 style={{ textAlign: "center" }}>Supervisors</h3>
+            <div className="supervisor-grid">
+              {supervisors.map((sup) => (
+                <div key={sup.id} className="team-member supervisor">
                   <div className="member-avatar">
-                    {member.firstname.charAt(0)}
-                    {member.lastname.charAt(0)}
+                    {sup.firstname.charAt(0)}{sup.lastname.charAt(0)}
                   </div>
                   <div className="member-info">
                     <strong>
-                      {member.firstname} {member.lastname}
+                      {sup.firstname} {sup.lastname}
                     </strong>
-                    <span>{member.role}</span>
+                    <span>{sup.role}</span>
                   </div>
+                  <a href={`mailto:${sup.email}`} className="contact-link">
+                    Contact
+                  </a>
+                </div>
+              ))}
+            </div>
+
+            <h3 style={{ marginTop: "2rem" }}>Project Team</h3>
+            <div className="team-grid">
+              {students.map((m) => (
+                <div key={m.id} className="team-member">
+                  <div className="member-avatar">
+                    {m.firstname.charAt(0)}{m.lastname.charAt(0)}
+                  </div>
+                  <div className="member-info">
+                    <strong>
+                      {m.firstname} {m.lastname}
+                    </strong>
+                    <span>{m.role}</span>
+                  </div>
+                  <a href={`mailto:${m.email}`} className="contact-link">
+                    Contact
+                  </a>
                 </div>
               ))}
             </div>
           </div>
         </CollapsibleSection>
 
-        {/* User Guide collapsible */}
+        {/* User Guide */}
         <CollapsibleSection
           id="user-guide"
           title="User Guide"
@@ -315,12 +380,13 @@ export default function MinecDownload() {
           </div>
         </CollapsibleSection>
 
-        {/* Video section */}
+        {/* Tutorial Video */}
         <section className="video-section" aria-label="Tutorial video">
           <h2>Tutorial Video</h2>
           <div className="video-wrapper">
             <iframe
-              src="https://www.youtube.com/embed/sZrTJesvJeo?si=m36lvbHY63yvoQSp"
+              // src="https://www.youtube.com/embed/sZrTJesvJeo?si=m36lvbHY63yvoQSp"
+              src=""
               title="Minec Software Tutorial Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -332,7 +398,7 @@ export default function MinecDownload() {
 
       <footer className="minec-footer">
         <p>
-          Public project — code available on{" "}
+          Public project — code available on{' '}
           <a
             href="https://github.com/Sadmi-Riad/DataMiningSoftware"
             target="_blank"
@@ -341,7 +407,7 @@ export default function MinecDownload() {
             GitHub
           </a>
         </p>
-        <p className="version-info">Version 1.0.0 — Released June 2023</p>
+        <p className="version-info">Version 1.0.0 — Released June 2025</p>
       </footer>
     </div>
   );
