@@ -140,10 +140,7 @@ body {
   cursor: pointer;
   transition: background var(--transition-default), transform var(--transition-default);
 }
-.btn-download:hover {
-  background: darken(var(--color-secondary), 10%);
-  transform: translateY(-2px);
-}
+
 .btn-download:active {
   transform: translateY(0);
 }
@@ -347,4 +344,58 @@ body {
 @media (max-width: 480px) {
   .minec-header { font-size: 1.3rem; }
   .section-title { font-size: 1.1rem; padding: 0.6rem 0.8rem; }
+}
+/* Feedback Section */
+.feedback-section {
+  background: var(--color-surface);
+  padding: 2rem 1.5rem;
+  margin: 3rem 0;
+  border-radius: var(--radius-default);
+  box-shadow: var(--shadow-md);
+}
+.feedback-section h2 {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.feedback-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.feedback-form input,
+.feedback-form textarea {
+  padding: 0.5rem;
+  border: 1px solid var(--color-muted);
+  border-radius: var(--radius-default);
+  font-size: 1rem;
+  resize: vertical;
+}
+.btn-feedback {
+  align-self: flex-start;
+  background: var(--color-secondary);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-default);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background var(--transition-default);
+}
+.btn-feedback:hover {
+  background: #d95b3a;
+}
+.feedback-status {
+  margin-top: 1rem;
+  font-style: italic;
+  color: var(--color-primary);
+}
+.btn-download:hover {
+  filter: brightness(0.9);
+  transform: translateY(-2px);
 }

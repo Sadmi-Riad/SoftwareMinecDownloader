@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./MinecDownload.css";
+import FeedbackForm from "./FeedbackForm";
 
 const downloads = [
   {
@@ -26,7 +27,7 @@ const projectMembers = [
     firstname: "Pr Baba-Ali",
     lastname: "Riadh",
     role: "Supervisor",
-    email: "superviseur@example.com",
+    email: "riadhbabaali@yahoo.fr",
     supervisor: true,
   },
   {
@@ -91,9 +92,10 @@ const userGuideSteps = [
             <strong>View:</strong> Minimize, Maximize, or Close the app
           </li>
         </ul>
-        Once a dataset is loaded, its name, number of rows, and columns are displayed.
-        Use checkboxes to Select/Unselect attributes or Remove them.
-        Click on an attribute to view its histogram and save it using 'Save Histogram'.
+        Once a dataset is loaded, its name, number of rows, and columns are
+        displayed. Use checkboxes to Select/Unselect attributes or Remove them.
+        Click on an attribute to view its histogram and save it using 'Save
+        Histogram'.
       </>
     ),
   },
@@ -102,32 +104,32 @@ const userGuideSteps = [
     title: "Preprocessing Tab",
     content: (
       <>
-        This module prepares data for analysis through transformation and cleaning tools.
+        This module prepares data for analysis through transformation and
+        cleaning tools.
         <h4>File Menu:</h4>
         <ul>
           <li>Open: Load a dataset</li>
           <li>Save / Save As: Save your processed dataset</li>
           <li>Exit: Close the application</li>
         </ul>
-
         <h4>Dataset Overview:</h4>
         <p>Displays selected attributes</p>
-
         <h4>Select Attribute:</h4>
         <ul>
           <li>Select All / Unselect All: Choose attributes for processing</li>
         </ul>
-
         <h4>Operation Message:</h4>
         <p>Shows operation output and logs each transformation</p>
-
         <h4>Transform Section:</h4>
         <ul>
-          <li>Encode Data: Convert categorical data to numeric, and vice versa</li>
+          <li>
+            Encode Data: Convert categorical data to numeric, and vice versa
+          </li>
           <li>Normalize Data: Scale features</li>
-          <li>Apply: Run the transformation and log in the Operation Message panel</li>
+          <li>
+            Apply: Run the transformation and log in the Operation Message panel
+          </li>
         </ul>
-
         <h4>Clean Section:</h4>
         <ul>
           <li>Delete Duplicates: Remove exact or near-duplicate rows</li>
@@ -135,7 +137,6 @@ const userGuideSteps = [
           <li>Handle Outliers: Options: IQR or Isolation Forest</li>
           <li>Handle Imbalanced Data: SMOTE</li>
         </ul>
-
         <h4>Tips:</h4>
         <ul>
           <li>Start with transformations before cleaning</li>
@@ -161,9 +162,14 @@ const userGuideSteps = [
         <h4>Test Methods:</h4>
         <ul>
           <li>Use Training Set: Apply estimation directly on training data</li>
-          <li>Supplied Test Set: Load an external test dataset for evaluation</li>
+          <li>
+            Supplied Test Set: Load an external test dataset for evaluation
+          </li>
           <li>Cross-Validation: Select number of folds</li>
-          <li>Percentage Split: Split dataset into training/testing sets by a defined ratio</li>
+          <li>
+            Percentage Split: Split dataset into training/testing sets by a
+            defined ratio
+          </li>
         </ul>
 
         <h4>Target Selection:</h4>
@@ -171,8 +177,8 @@ const userGuideSteps = [
 
         <h4>Algorithm:</h4>
         <p>
-          Linear Regression: Estimate relationships between variables using a linear
-          model
+          Linear Regression: Estimate relationships between variables using a
+          linear model
         </p>
 
         <h4>Apply Estimation:</h4>
@@ -226,14 +232,25 @@ const DownloadCard = ({ id, title, href, imgSrc, alt, hovered, onHover }) => {
         />
       </div>
       <h3 className="download-title">{title}</h3>
-      <button type="button" className="btn-download" tabIndex={-1} aria-hidden="true">
+      <button
+        type="button"
+        className="btn-download"
+        tabIndex={-1}
+        aria-hidden="true"
+      >
         Download
       </button>
     </a>
   );
 };
 
-const CollapsibleSection = ({ id, title, isCollapsed, toggleCollapse, children }) => (
+const CollapsibleSection = ({
+  id,
+  title,
+  isCollapsed,
+  toggleCollapse,
+  children,
+}) => (
   <section aria-labelledby={`${id}-heading`}>
     <h2
       id={`${id}-heading`}
@@ -269,6 +286,7 @@ export default function MinecDownload() {
   const [headerScrolled, setHeaderScrolled] = useState(false);
   const [descCollapsed, setDescCollapsed] = useState(false);
   const [guideCollapsed, setGuideCollapsed] = useState(true);
+  const [feedbackCollapsed, setFeedbackCollapsed] = useState(true);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [activeGuideStep, setActiveGuideStep] = useState(userGuideSteps[0]?.id);
 
@@ -289,12 +307,20 @@ export default function MinecDownload() {
 
       <main className="minec-main">
         {/* Download buttons */}
-        <div className="download-buttons" role="region" aria-label="Download Minec software">
+        <div
+          className="download-buttons"
+          role="region"
+          aria-label="Download Minec software"
+        >
           {downloads.map((dl) => (
-            <DownloadCard key={dl.id} {...dl} hovered={hoveredCard} onHover={setHoveredCard} />
+            <DownloadCard
+              key={dl.id}
+              {...dl}
+              hovered={hoveredCard}
+              onHover={setHoveredCard}
+            />
           ))}
         </div>
-
         {/* Software Description & Team */}
         <CollapsibleSection
           id="software-description"
@@ -304,13 +330,16 @@ export default function MinecDownload() {
         >
           <div className="project-description">
             <p>
-              MINEC is a powerful data mining application developed as a final year
-              project by a team of 4 computer science students under the supervision of{' '}
+              MINEC is a powerful data mining application developed as a final
+              year project by a team of 4 computer science students under the
+              supervision of{" "}
               <strong>
-                {supervisors.map((s) => `${s.firstname} ${s.lastname}`).join(" and ")}
+                {supervisors
+                  .map((s) => `${s.firstname} ${s.lastname}`)
+                  .join(" and ")}
               </strong>
-              . The software provides tools for data preprocessing, analysis, and
-              visualization.
+              . The software provides tools for data preprocessing, analysis,
+              and visualization.
             </p>
 
             <h3 style={{ textAlign: "center" }}>Supervisors</h3>
@@ -318,7 +347,8 @@ export default function MinecDownload() {
               {supervisors.map((sup) => (
                 <div key={sup.id} className="team-member supervisor">
                   <div className="member-avatar">
-                    {sup.firstname.charAt(0)}{sup.lastname.charAt(0)}
+                    {sup.firstname.charAt(0)}
+                    {sup.lastname.charAt(0)}
                   </div>
                   <div className="member-info">
                     <strong>
@@ -338,7 +368,8 @@ export default function MinecDownload() {
               {students.map((m) => (
                 <div key={m.id} className="team-member">
                   <div className="member-avatar">
-                    {m.firstname.charAt(0)}{m.lastname.charAt(0)}
+                    {m.firstname.charAt(0)}
+                    {m.lastname.charAt(0)}
                   </div>
                   <div className="member-info">
                     <strong>
@@ -354,7 +385,6 @@ export default function MinecDownload() {
             </div>
           </div>
         </CollapsibleSection>
-
         {/* User Guide */}
         <CollapsibleSection
           id="user-guide"
@@ -367,7 +397,9 @@ export default function MinecDownload() {
               {userGuideSteps.map((step) => (
                 <button
                   key={step.id}
-                  className={`guide-tab ${activeGuideStep === step.id ? "active" : ""}`}
+                  className={`guide-tab ${
+                    activeGuideStep === step.id ? "active" : ""
+                  }`}
                   onClick={() => setActiveGuideStep(step.id)}
                 >
                   {step.title}
@@ -375,11 +407,22 @@ export default function MinecDownload() {
               ))}
             </div>
             <div className="guide-content">
-              {userGuideSteps.find((step) => step.id === activeGuideStep)?.content}
+              {
+                userGuideSteps.find((step) => step.id === activeGuideStep)
+                  ?.content
+              }
             </div>
           </div>
         </CollapsibleSection>
-
+        {/* Feedback Section */}
+        <CollapsibleSection
+          id="feedback"
+          title="Feedback"
+          isCollapsed={feedbackCollapsed}
+          toggleCollapse={() => setFeedbackCollapsed(!feedbackCollapsed)}
+        >
+          <FeedbackForm />
+        </CollapsibleSection>
         {/* Tutorial Video */}
         <section className="video-section" aria-label="Tutorial video">
           <h2>Tutorial Video</h2>
@@ -398,7 +441,7 @@ export default function MinecDownload() {
 
       <footer className="minec-footer">
         <p>
-          Public project — code available on{' '}
+          Public project — code available on{" "}
           <a
             href="https://github.com/Sadmi-Riad/DataMiningSoftware"
             target="_blank"
