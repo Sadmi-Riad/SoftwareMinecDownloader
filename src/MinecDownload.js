@@ -6,7 +6,7 @@ const downloads = [
   {
     id: "windows",
     title: "Windows",
-    href: "https://example.com/minec/windows-installer.exe",
+    href: "https://drive.google.com/uc?export=download&id=1y-5b-9LYaCLPjE1d_71woXo4aAtNInau",
     imgSrc:
       "https://img.utdstc.com/icon/031/b07/031b07c479e002248b33eb31a0d40ad4658ec533f84c444d36fe656c9f448a88:200",
     alt: "Windows Logo",
@@ -428,8 +428,7 @@ export default function MinecDownload() {
           <h2>Tutorial Video</h2>
           <div className="video-wrapper">
             <iframe
-              // src="https://www.youtube.com/embed/sZrTJesvJeo?si=m36lvbHY63yvoQSp"
-              src=""
+              src="https://www.youtube.com/embed/tbxE44zIpoE?controls=1"
               title="Minec Software Tutorial Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

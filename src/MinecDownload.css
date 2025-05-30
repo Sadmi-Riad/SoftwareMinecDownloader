@@ -582,6 +582,7 @@ a:hover {
   opacity: 0;
   transition: opacity var(--transition-default);
   z-index: 1;
+  pointer-events: none;
 }
 
 .video-wrapper:hover::before {
