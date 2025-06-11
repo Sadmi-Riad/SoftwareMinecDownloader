@@ -6,7 +6,7 @@ const downloads = [
   {
     id: "windows",
     title: "Windows",
-    href: "https://drive.google.com/uc?export=download&id=1y-5b-9LYaCLPjE1d_71woXo4aAtNInau",
+    href: "https://drive.google.com/file/d/1qVB6ge092cYBu-R_8lP7-02-zknxrlu2/view?usp=sharing",
     imgSrc:
       "https://img.utdstc.com/icon/031/b07/031b07c479e002248b33eb31a0d40ad4658ec533f84c444d36fe656c9f448a88:200",
     alt: "Windows Logo",
