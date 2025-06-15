@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+> 🚩 Download, user guide, feedback and tutorial videos for Minec Group's data mining software (hosted with Netlify).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Minec Group Data Mining Software – Web Portal
 
-## Available Scripts
+<p align="center">
+  <img src="public/minecLogo.ico" alt="Minec Logo" width="120"/>
+</p>
 
-In the project directory, you can run:
+Welcome!  
+This site provides everything you need to get started with our data mining software:
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 📦 Download
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Get the latest version of the software directly from this page.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📖 User Guide
 
-### `npm run build`
+- Find step-by-step instructions to install and use the application.
+- Tips for data loading, cleaning, transformation, and analysis.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🎥 Tutorial Videos
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Watch tutorial videos to see the software in action.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 💬 Feedback & Support
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Reach out for assistance or to submit your feedback.
+- Help us improve: your opinion matters!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## ℹ️ About
 
-## Learn More
+Minec is a user-friendly tool to load, inspect, transform, and prepare your datasets for analysis.  
+Built with Python, PyQt5, pandas, matplotlib, scikit-learn, and more.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+_Minec Group © 2025 – making data preparation simple and clear._  
